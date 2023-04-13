@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { toggleSidePanel } from "./redux/slices/appSlice";
-import { loadProductsData } from "./redux/slices/productsSlice";
+import { loadProductsData, fetchProducts } from "./redux/slices/productsSlice";
 import { emptyCart } from "./redux/slices/cartSlice";
 
 import TopBar from "./components/TopBar";
@@ -17,9 +17,9 @@ function App() {
    const result = useSelector(state => state);
 
    //* Initial loading of the products
-   // useEffect(() => {
-   //    dispatch(loadProductsData());
-   // }, []);
+   useEffect(() => {
+      dispatch(fetchProducts());
+   }, []);
 
    //* Return
    return (
