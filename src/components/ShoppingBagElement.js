@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { useDispatch } from "react-redux";
 import InputFieldIterator from "./construction/InputFieldIterator";
-import { addToCart, removeFromCart } from "../redux/actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/slices/cartSlice";
 
 function ShoppingBagElement({ elementData }) {
    const dispatch = useDispatch();
@@ -29,4 +30,4 @@ function ShoppingBagElement({ elementData }) {
    );
 }
 
-export default ShoppingBagElement;
+export default memo(ShoppingBagElement);

@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 function InputField({ type, name, placeholder = "text", area, value, onChange, infoText = "" }) {
    const inputFieldValue = {
       name,
@@ -26,4 +28,4 @@ function InputField({ type, name, placeholder = "text", area, value, onChange, i
    );
 }
 
-export default InputField;
+export default memo(InputField);

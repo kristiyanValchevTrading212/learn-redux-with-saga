@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 
 function InputFieldIterator({ initialNumber = 0, selfState = false, min, max, onNumberUp = () => null, onNumberDown = () => null, className = "" }) {
    const [number, setNumber] = useState(initialNumber);
@@ -31,4 +31,4 @@ function InputFieldIterator({ initialNumber = 0, selfState = false, min, max, on
    );
 }
 
-export default InputFieldIterator;
+export default memo(InputFieldIterator);

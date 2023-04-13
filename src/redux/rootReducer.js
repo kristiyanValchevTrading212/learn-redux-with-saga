@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import { appReducer } from "./reducers/appReducer";
-import { cartReducer } from "./reducers/cartReducer";
-import { productReducer } from "./reducers/productReducer";
+import appReducer from "./slices/appSlice";
+import cartReducer from "./slices/cartSlice";
+import productReducer from "./slices/productsSlice";
 
 export default combineReducers({
    appData: appReducer,

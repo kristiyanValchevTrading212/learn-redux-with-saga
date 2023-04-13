@@ -1,10 +1,9 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { toggleSidePanel } from "./redux/actions/appActions";
-import { productsList } from "./redux/actions/productActions";
-import { emptyCart } from "./redux/actions/cartActions";
-
-import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import { toggleSidePanel } from "./redux/slices/appSlice";
+import { loadProductsData } from "./redux/slices/productsSlice";
+import { emptyCart } from "./redux/slices/cartSlice";
 
 import TopBar from "./components/TopBar";
 import Spacer from "./components/construction/Spacer";
@@ -17,19 +16,18 @@ function App() {
    const dispatch = useDispatch();
    const result = useSelector(state => state);
 
+   //* Initial loading of the products
+   // useEffect(() => {
+   //    dispatch(loadProductsData());
+   // }, []);
+
+   //* Return
    return (
       <>
          <TopBar />
          <Spacer height={20} />
 
-
          <h1 className="mainText">New Products</h1>
-         {
-            result?.productsData?.items?.length === 0 &&
-            <Button circle={true} icon={faArrowRotateLeft} onClick={event => {
-               dispatch(productsList());
-            }} />
-         }
          <div className="normalGrid">
             {
                result?.productsData?.items?.map((element, index) => {
@@ -47,7 +45,7 @@ function App() {
                result?.cartData?.cartContent?.length === 0 &&
                <>
                   <p className="normalText taCenter fsItalic">Nothing in the bag yet</p>
-                  <Button text="Continue shopping" center={true} onClick={event => dispatch(toggleSidePanel("shoppingBag", false))} />
+                  <Button text="Continue shopping" center={true} onClick={event => dispatch(toggleSidePanel({ id: "shoppingBag", action: false }))} />
                </>
             }
             {

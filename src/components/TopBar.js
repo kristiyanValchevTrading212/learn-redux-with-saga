@@ -1,9 +1,10 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "./construction/Button";
-import { toggleSidePanel } from "../redux/actions/appActions";
+import { toggleSidePanel } from "../redux/slices/appSlice";
 
 function TopBar() {
    const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function TopBar() {
                circle={true}
                notificationNumber={cartData.cartContent.length}
                style={{ marginLeft: "auto" }}
-               onClick={event => dispatch(toggleSidePanel("shoppingBag"))}
+               onClick={event => dispatch(toggleSidePanel({ id: "shoppingBag" }))}
             />
          </div>
          <div className="underTopBar"></div>
@@ -26,4 +27,4 @@ function TopBar() {
    );
 }
 
-export default TopBar;
+export default memo(TopBar);

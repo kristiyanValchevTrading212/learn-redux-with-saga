@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component, memo } from "react";
 
 class Spacer extends Component {
    render() {
@@ -8,4 +8,4 @@ class Spacer extends Component {
    }
 }
 
-export default Spacer;
+export default memo(Spacer);

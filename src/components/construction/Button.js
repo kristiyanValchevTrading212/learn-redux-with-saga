@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Button({ text = "click", icon, type, onClick, total, center, right, circle, style, notificationNumber = 0, version }) {
@@ -37,4 +38,4 @@ function Button({ text = "click", icon, type, onClick, total, center, right, cir
    );
 }
 
-export default Button;
+export default memo(Button);

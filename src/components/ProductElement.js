@@ -1,5 +1,6 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/slices/cartSlice";
 
 import { faMinus, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
@@ -45,4 +46,4 @@ function ProductElement({ productData }) {
    );
 }
 
-export default ProductElement;
+export default memo(ProductElement);
