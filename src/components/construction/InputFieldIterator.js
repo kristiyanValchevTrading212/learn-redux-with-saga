@@ -1,34 +1,44 @@
-import { useState, memo } from "react";
+import { memo, useCallback } from "react";
 
-function InputFieldIterator({ initialNumber = 0, selfState = false, min, max, onNumberUp = () => null, onNumberDown = () => null, className = "" }) {
-   const [number, setNumber] = useState(initialNumber);
+function InputFieldIterator({
+  count = 0,
+  min,
+  max,
+  onNumberUp = () => null,
+  onNumberDown = () => null,
+  className = "",
+}) {
+  const onUpClicked = useCallback(() => {
+    if (count >= max) return;
 
-   const numberUp = () => {
-      if (number >= max) return;
+    onNumberUp();
+  }, [count, max, onNumberUp]);
 
-      setNumber(oldValue => oldValue + 1);
-      onNumberUp(number + 1);
-   }
+  const onDownClicked = useCallback(() => {
+    if (count <= min) return;
 
-   const numberDown = () => {
-      if (number <= min) return;
+    onNumberDown();
+  }, [count, min, onNumberDown]);
 
-      setNumber(oldValue => oldValue - 1);
-      onNumberDown(number - 1);
-   }
-
-   return (
-      <div className={`inputFieldIterator${className !== "" ? ` ${className}` : ""}`}>
-         <div className="inputFieldIteratorElement">
-            {!selfState && number}
-            {selfState && initialNumber}
-         </div>
-         <div className="inputFieldIteratorElement">
-            <div className="inputFieldIteratorElementButton" onClick={event => numberUp()}>+</div>
-            <div className="inputFieldIteratorElementButton" onClick={event => numberDown()}>-</div>
-         </div>
+  return (
+    <div
+      className={`inputFieldIterator${className !== "" ? ` ${className}` : ""}`}
+    >
+      <div className="inputFieldIteratorElement">{count}</div>
+      <div className="inputFieldIteratorElement">
+        <div className="inputFieldIteratorElementButton" onClick={onUpClicked}>
+          +
+        </div>
+        <div
+          className="inputFieldIteratorElementButton"
+          onClick={onDownClicked}
+        >
+          -
+        </div>
       </div>
-   );
+    </div>
+  );
 }
 
 export default memo(InputFieldIterator);
+

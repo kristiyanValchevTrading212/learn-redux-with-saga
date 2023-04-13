@@ -1,41 +1,64 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Button({ text = "click", icon, type, onClick, total, center, right, circle, style, notificationNumber = 0, version }) {
-   const buttonProps = {
-      className: `button${center ? " center" : ""}${right ? " right" : ""}${circle ? " circle" : ""}${total ? " total" : ""}`,
-      style,
-   };
+function Button({
+  text = "click",
+  icon,
+  type,
+  onClick,
+  total,
+  center,
+  right,
+  circle,
+  style,
+  notificationNumber = 0,
+  version,
+}) {
+  const buttonProps = {
+    className: `button${center ? " center" : ""}${right ? " right" : ""}${
+      circle ? " circle" : ""
+    }${total ? " total" : ""}`,
+    style,
+    onClick,
+    version,
+    ["notification-number"]:
+      notificationNumber > 0 ? notificationNumber : undefined,
+  };
 
-   if (onClick !== null) buttonProps.onClick = onClick;
-   if (version !== null) buttonProps.version = version;
-   if (notificationNumber !== 0) buttonProps["notificationnumber"] = notificationNumber;
+  const Content = useMemo(() => {
+    if (!circle) {
+      return text;
+    }
 
-   const buttonContent = (
-      <>
-         {
-            circle && icon &&
-            <FontAwesomeIcon icon={icon} size="6x" />
-         }
-         {
-            !circle &&
-            text
-         }
-      </>
-   )
+    if (icon) {
+      return <FontAwesomeIcon icon={icon} size="6x" />;
+    }
 
-   return (
-      <>
-         {
-            type !== "submit" &&
-            <p {...buttonProps}>{buttonContent}</p>
-         }
-         {
-            type === "submit" &&
-            <button type="submit" {...buttonProps}>{buttonContent}</button>
-         }
-      </>
-   );
+    return null;
+  }, [circle, icon, text]);
+
+  switch (type) {
+    case "submit": {
+      return (
+        <button type="submit" {...buttonProps}>
+          {Content}
+        </button>
+      );
+    }
+
+    case "link": {
+      return <a {...buttonProps}>{Content}</a>;
+    }
+
+    default: {
+      return (
+        <button type="button" {...buttonProps}>
+          {Content}
+        </button>
+      );
+    }
+  }
 }
 
 export default memo(Button);
+
