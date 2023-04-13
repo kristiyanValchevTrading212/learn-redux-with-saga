@@ -1,0 +1,49 @@
+{
+   "products": [
+      {
+         "id": 1,
+         "name": "Samsun Galaxy S22",
+         "color": "Green",
+         "price": 350000,
+         "category": "mobile",
+         "brand": "Samsung",
+         "imageURL": "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80"
+      },
+      {
+         "id": 2,
+         "name": "Loren",
+         "color": "Pink",
+         "price": 1200,
+         "category": "some",
+         "brand": "A brand",
+         "imageURL": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+      },
+      {
+         "id": 3,
+         "name": "A product here",
+         "color": "Black",
+         "price": 7620,
+         "category": "another",
+         "brand": "this one is a brand",
+         "imageURL": "https://cdn.pixabay.com/photo/2018/01/12/10/19/fantasy-3077928__480.jpg"
+      },
+      {
+         "id": 4,
+         "name": "Another name of it",
+         "color": "white",
+         "price": 3598,
+         "category": "this one",
+         "brand": "another brand",
+         "imageURL": "https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="
+      },
+      {
+         "id": 5,
+         "name": "Something in here",
+         "color": "Purple",
+         "price": 16273,
+         "category": "than another",
+         "brand": "Nokia",
+         "imageURL": "https://www.befunky.com/images/prismic/1f427434-7ca0-46b2-b5d1-7d31843859b6_funky-focus-red-flower-field-after.jpeg?auto=avif,webp&format=jpg&width=863"
+      }
+   ]
+}

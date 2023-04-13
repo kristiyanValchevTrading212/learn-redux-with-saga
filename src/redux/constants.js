@@ -1,0 +1,8 @@
+export const TOGGLE_SIDE_PANEL = "TOGGLE_SIDE_PANEL";
+
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const EMPTY_CART = "EMPTY_CART";
+
+export const PRODUCTS_LIST = "PRODUCTS_LIST";
+export const SET_PRODUCTS_LIST = "SET_PRODUCTS_LIST";
